@@ -21,6 +21,13 @@
         let plusBtn = document.querySelector("#plus")
         console.log(plusBtn);
 
+        plusBtn.addEventListener('click', function () {
+            console.log("クリックしたぞ！");
+            count++;
+            console.log(count);
+            counter.textContent = count;
+        })
+
         let a;
         console.log(a);
         a = 10;
