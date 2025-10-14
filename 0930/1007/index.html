@@ -106,17 +106,37 @@
 
     if (ansewr === ansewrs[index]) {
         resultMessage.textContent = '正解です';
+        score++;
     } else {
         resultMessage.textContent = '不正解です';
     }
+    index++;
 
     index++;
     questionElem.textContent = questions[index];
     ansewr = '';//初期化
 
-    console.log(ansewrs);
-});
+    if (index === questions.length) {
+        questionElem.textContent = '3問中' + score + '問正解です。';
+        console.log(score);
+    }
 
+    console.log(ansewrs);
+
+</script>
+
+<script>
+    //練習
+    console.log('円周率は、' + 3.14 + 'です。');
+    console.log('計算結果:' + 1234 + 5678);
+
+    console.log(123 + 456 + 'です。');
+
+    console.log('計算結果:' + (123 + 456));
+
+    console.log('2' - 1);
+    console.log('2' * 1);
+    console.log('4' / 2);
 </script>
 
 <script>
