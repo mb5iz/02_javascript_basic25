@@ -9,6 +9,18 @@
         .doctitle span {
             color: #ff0000;
         }
+
+        li {
+            color: blue;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .orenge {
+            color: orange;
+        }
     </style>
 </head>
 
@@ -22,7 +34,10 @@
         <li>3</li>
         <li>4</li>
         <li>5</li>
+        <li>6</li>
     </ul>
+
+    <button>色を変える</button>
 
     <script>
         // document.queryselector('.doctitle span');
@@ -60,6 +75,28 @@
             console.log('それ以外です。')
         }
 
+        const animal = ['いぬ', 'ねこ', 'リス', 'サメ'];
+        console.log(animal[1]);
+        for (let i = 0; i < 4; i = i + 1) {
+            console.log(animals[i]);
+        }
+
+        for (let i = 0; i < lists.length; i++) {
+            console.log(lists[i]);
+        }
+        // lists[1].classList.add('green');
+        // lists[4].classList.remove('orenge');
+
+
+        // 関数の定義
+        function changecolor() {
+            lists[1].classList.add('green');
+            lists[4].classList.remove('orenge');
+        }
+
+
+        //関数の実行
+        changecolor();
     </script>
 </body>
 
