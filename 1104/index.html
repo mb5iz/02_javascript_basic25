@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>復讐</title>
+    <style>
+        .doctitle span {
+            color: #ff0000;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="doctitle"><span>1</span>タイトルですよ。</h1>
+    <h2>サブタイトル</h2>
+
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+
+    <script>
+        // document.queryselector('.doctitle span');
+        // const title = document.querySelector('.doctitle span');
+        // const num = 0;
+        // console.log(title);
+        // console.log(num);
+
+        // const text = 'コンスト';
+        // text2 = 'レット2'
+
+        // title.addEventListener('click', function () {
+        //     alert('スパン');
+        // })
+
+        const sub = document.querySelector('h2');
+        console.log(sub);
+        sub.addEventListener('click', function){
+            alert('サブタイトル');
+        }
+
+        const lists = document.querySelectorAll('li');
+        console.log(lists);
+
+        console.log(lists[2]);
+
+        console.log(lists[4]);
+
+        let number = 3;
+        li(number === 1){
+            console.log('1です。')
+        }else if (number === 2) {
+            console.log('2です。')
+        } else {
+            console.log('それ以外です。')
+        }
+
+    </script>
+</body>
+
+</html>
