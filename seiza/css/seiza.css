@@ -1,0 +1,141 @@
+@charset "UTF-8";
+
+/* --- 1. アニメーション背景 #bg のスタイル統合 --- */
+#bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  /* コンテンツの下に配置 */
+  background: #123;
+  /* 星空の背景色 */
+  color: transparent;
+}
+
+#bg::before,
+#bg::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3em;
+  height: 3em;
+  content: ".";
+  mix-blend-mode: screen;
+  animation: 44s -27s move infinite ease-in-out alternate;
+}
+
+#bg::before {
+  /* SCSSからコンパイルされたtext-shadowのランダムな値 */
+  text-shadow: 1em 1em 7px hsla(250deg, 100%, 50%, 0.9), 1em 1em 7px hsla(120deg, 100%, 50%, 0.9);
+  animation-duration: 44s;
+  animation-delay: -27s;
+}
+
+#bg::after {
+  /* SCSSからコンパイルされたtext-shadowのランダムな値 */
+  text-shadow: 1em 1em 7px hsla(300deg, 100%, 50%, 0.9), 1em 1em 7px hsla(180deg, 100%, 50%, 0.9);
+  animation-duration: 43s;
+  animation-delay: -32s;
+}
+
+@keyframes move {
+  from {
+    transform: rotate(0deg) scale(12) translateX(-20px);
+  }
+
+  to {
+    transform: rotate(360deg) scale(18) translateX(20px);
+  }
+}
+
+/* Webkitベンダープレフィックスは省略します（現代のブラウザでは不要なため） */
+
+
+/* --- 2. 既存の占いコンテンツのスタイル（調整済み） --- */
+
+body {
+  /* 背景設定を#bgに任せるため、radial-gradientやbackground-imageを削除 */
+  color: #fff;
+  /* 文字色は白を維持 */
+  font-family: serif;
+  margin: 0;
+  text-align: center;
+  margin-top: 192px;
+  font-size: 0.9rem;
+}
+
+.seiza-text {
+  font-size: 1.5rem;
+  color: #fff;
+  text-align: center;
+}
+
+.seiza-sabtext {
+  font-size: 1.2rem;
+  color: #ffd700;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.seiza-scroll {
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+.seiza-top,
+.seiza-center,
+.seiza-bottom {
+  min-height: 11vh;
+  display: flex;
+  justify-content: center;
+  gap: 134px;
+  margin-bottom: 192px;
+  margin-top: 192px;
+}
+
+.seiza-btn {
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 187px;
+
+  /* ボタンの画像とグラデーションを重ねる設定 (画像パスは要確認) */
+  background-image: url('images/star-icon.png'), linear-gradient(135deg, #ffd700, #ffa500);
+  background-size: 20px, auto;
+  background-position: calc(100% - 10px) center, 0 0;
+  background-repeat: no-repeat, repeat;
+  color: #222;
+}
+
+.seiza-btn:hover {
+  transform: scale(1.05);
+}
+
+.container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+}
+
+h1,
+h2 {
+  color: #ffd700;
+  text-shadow: 0 0 10px #ffd700;
+  font-size: 1.5rem;
+}
+
+#result {
+  opacity: 0;
+  transition: 0.5s;
+  margin-top: 20px;
+}
+
+#result.show {
+  opacity: 1;
+  padding-bottom: 174px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/the-new-css-reset/css/reset.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>占い</title>
+</head>
+
+<body>
+    <button id="btn">占う</button>
+    <div id="result"></div>
+
+    <script>
+        //1. 配列リテラルを作る
+        // 配列リテラル
+        const luckList = ['大吉', '中吉', '小吉', '凶'];
+
+        // ラッキーカラー
+        const colorList = ['red', 'blue', 'green', 'yellow'];
+
+        // ラッキーアイテム
+        const itemList = ['お守り', 'ノート', 'スマホ', 'コーヒー'];
+
+
+
+        //2. オブジェクトリテラルを作る
+        const massages = {
+            '大吉': '今日は最高の日になりそう！',
+            '中吉': '穏やかんに過ごせる一日です。',
+            '小吉': '小さな幸せを見つけよう。',
+            '凶': '焦らず落ち着いて行動しよう',
+        }
+
+        console.log(luckList[0]);
+        const number = Math.floor(Math.random() * luckList.length);
+        console.log[number];
+
+        const getRandomElement = function (array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        const getFortune = function () {
+            const luck = getRandomElement(luckList);
+            const color = getRandomElement(colorList);
+            const item = getRandomElement(itemList);
+            const message = massages[luck];
+
+
+            return {
+                luck: luck,
+                color: color,
+                item: item,
+                message: message,
+            };
+        };
+
+        //const result = getFortune();
+        //console.log(result);
+
+
+        //3. 引数・戻り値のある関数式を作る
+        //4. 1回分の占い結果を作る関数式getFortune
+
+        //5. ボタンをクリックしたときのイベント（HTMLを書き換えて表⽰＋アニメーション）
+        const btn = document.querySelector('#btn');
+        const result = document.querySelector('#result');
+        btn.addEventListener('click', () => {
+            const resultObject = getFortune();
+            let message = resultObject.message;
+            result.innerHTML = `<h2>${resultObject.luck}</h2>
+            <p>ラッキーカラー: ${resultObject.color}</p>
+            <p>ラッキーアイテム: ${resultObject.item}</p>
+            <p>${message}</p>`;
+
+            result.classList.add('show');
+        });
+
+    </script>
+</body>
+
+</html>

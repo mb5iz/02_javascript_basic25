@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/the-new-css-reset/css/reset.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <title>星座占い</title>
+</head>
+
+<a href="#" id="page-top">▲</a>
+
+<body>
+    <div id="bg"></div>
+
+    <div class="main-wrapper">
+
+        <div class="seiza-text">誕生日の星座を押して占ってみよう！</div>
+        <div class="seiza-sabtext">自分の当てはまる星座を押してみてね</div>
+
+        <div class="seiza-top">
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/hituji.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">牡羊座<br>03/21~04/19</button>
+            </div>
+
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/usi.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">牡牛座<br>04/20~05/20</button>
+            </div>
+
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/futago.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">双子座<br>05/21~06/21</button>
+            </div>
+
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/kani.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">蟹座<br>06/22~07/22</button>
+            </div>
+        </div>
+
+
+        <div class="seiza-center">
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/sisi.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">獅子座<br>07/23~08/22</button>
+            </div>
+
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/otome.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">乙女座<br>08/23~09/22</button>
+            </div>
+
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/tenbin.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">天秤座<br>09/23~10/23</button>
+            </div>
+
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/sasori.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">蠍座<br>10/24~11/22</button>
+            </div>
+        </div>
+        <div class="seiza-bottom">
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/ite.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">射手座<br>11/23~12/21</button>
+            </div>
+
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/yagi.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">山羊座<br>12/22~01/19</button>
+            </div>
+
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/mizugame.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">水瓶座<br>01/20~02/18</button>
+            </div>
+
+            <div class="seiza-imagebtn">
+                <div class="seiza-img">
+                    <img src="./img/uo.png" alt="" loading="lazy">
+                </div>
+                <button class="seiza-btn">魚座<br>02/19~03/20</button>
+            </div>
+        </div>
+        <div id="result"></div>
+
+        <div id="page-bottom"></div>
+    </div>
+
+    <script>
+        const luckList = ['1等', '2等', '3等', '4等', '5等', '6等', '7等', '8等', '9等', '10等', '11等', '12等', '13等', '14等', '15等',
+            '16等'];
+        const colorList = ['red', 'blue', 'green', 'yellow', 'pople', 'white', 'pink', 'black', 'orange', 'gray', 'purple',
+            'brown', 'cyan', 'violet', 'maroon', 'olive'];
+        const itemList = ['お守り', 'ノート', 'スマホ', 'コーヒー', 'ポーチ', 'マスク', 'ハンカチ', 'コップ', 'サングラス', 'モバイルバッテリー', '水筒', '時計',
+            'ウエットティッシュ', '鏡', 'ボールペン', 'イヤホン'];
+
+        const massages = {
+            '1等': '今日は最高の日になりそう！',
+            '2等': '穏やかに過ごせる一日です。',
+            '3等': '小さな幸せを見つけよう。',
+            '4等': '新しいものを新調してみよう',
+            '5等': '甘い物を食べてみよう',
+            '6等': '新しい服を買ってみよう',
+            '7等': 'お菓子を食べてリフレッシュ！',
+            '8等': '明日は早起きしてみよう',
+            '9等': '美容をする日になりそう！',
+            '10等': 'ヘアセットを頑張ってみよう',
+            '11等': '明日は早寝をしてみよう',
+            '12等': '懐かしい友人に連絡してみよう',
+            '13等': '苦手な食べ物にチャレンジしてみよう',
+            '14等': '明日は雨が振るかも',
+            '15等': '焦らず落ち着いて行動しよう',
+            '16等': '冷静に考えてから行動してみよう',
+        };
+
+        const getRandomElement = function (array) {
+            return array[Math.floor(Math.random() * array.length)];
+        };
+
+        const getFortune = function () {
+            const luck = getRandomElement(luckList);
+            const color = getRandomElement(colorList);
+            const item = getRandomElement(itemList);
+            const message = massages[luck];
+
+            return {
+                luck: luck,
+                color: color,
+                item: item,
+                message: message,
+            };
+        };
+
+        const setFortuneListeners = function () {
+            const buttons = document.querySelectorAll('.seiza-btn');
+            const resultDiv = document.querySelector('#result');
+            const scrollTarget = document.querySelector('#page-bottom');
+
+            for (let i = 0; i < buttons.length; i++) {
+                const btn = buttons[i];
+                btn.addEventListener('click', () => {
+                    const resultObject = getFortune();
+                    let message = resultObject.message;
+
+                    resultDiv.classList.remove('show');
+
+                    setTimeout(() => {
+                        resultDiv.innerHTML = `<h2>${resultObject.luck}</h2>
+        <p>ラッキーカラー: ${resultObject.color}</p>
+        <p>ラッキーアイテム: ${resultObject.item}</p>
+        <p>${message}</p>`;
+
+                        resultDiv.classList.add('show');
+
+                        if (scrollTarget) {
+                            scrollTarget.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }, 10);
+                });
+            }
+        };
+
+        setFortuneListeners();
+
+        document.getElementById("page-top").addEventListener("click", function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+    </script>
+</body>
+
+</html>

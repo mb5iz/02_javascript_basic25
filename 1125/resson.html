@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習1125</title>
+</head>
+
+<body>
+    <script>
+
+        const name = 'Alice';
+        console.log('私の名前は' + name + 'です。');
+
+        console.log(`私の名前は${name}です。`);
+
+        const text = `私の名前は、
+        ${name}です。`;
+        console.log(text);
+
+        const innerhtml = document.querySelector('innerhtml');
+        //innerhtml.textContent = '<h1>Hello</h1>';
+        innerhtml.innerHTML = '<h1>Hello</h1>';
+        innerhtml.innerHTML += '<h2>World</h2>';
+        innerhtml.innerHTML += '<ul>';
+
+        //戻り値のある関数
+        function pi() {
+            console.log(3.14);
+        }
+        pi();
+        function pi2() {
+            //コンソールに表示
+            return 3.141592653589;
+        }
+        pi2();//関数の実行
+        const result = pi2();
+        console.log(result);
+
+        ///引数を2倍にして戻す関数
+        function double(num) {
+            return num * 2;
+        }
+        const a = double(10);
+        console.log(a);
+        const b = double(8);
+        console.log(b);
+
+
+        //関数
+        //functhionには名前を付けない
+        const sayHello = function () {
+            console.log('こんにちは');
+        }
+        sayHello();
+
+
+        function makeJuice(fruit) {
+            console.log(fruit + 'ジュース');
+        }
+        makeJuice('りんご');
+
+        const makeJuice2 = function (fruit) {
+            console.log(fruit + 'ジュース');
+        }
+        makeJuice2('みかん');
+    </script>
+</body>
+
+</html>
